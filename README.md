@@ -16,6 +16,8 @@ you may use any flavour of automation tools, Ansible, Terraform - everything wil
 ![Deployment layout](doc/img/deployment-layout.png)
 
 
+
+
 ## Kafka Topic specs
 
 - name: testCommand
