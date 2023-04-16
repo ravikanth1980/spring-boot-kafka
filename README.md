@@ -16,7 +16,6 @@ you may use any flavour of automation tools, Ansible, Terraform - everything wil
 ![Deployment layout](doc/img/deployment-layout.png)
 
 
-
 ## Kafka Topic specs
 
 - name: testCommand
@@ -97,7 +96,6 @@ https://docs.spring.io/spring-boot/docs/2.1.8.RELEASE/reference/html/boot-featur
 `SPRING_DATASOURCE_USERNAME=postgres`
 
 ### Reader
-
 
 Sample application configuration `application.yaml` file
 
