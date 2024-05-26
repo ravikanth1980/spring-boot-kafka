@@ -13,7 +13,7 @@ on:
     branches: [ main ]
 
 env:
-  repo: lwplapbs
+  repo: ravikanth1980
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
@@ -39,25 +39,25 @@ jobs:
         run: ./build-app.sh
            
       - name: Build and push front image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@main
         with:
           context: app/front/src/main/docker/
           push: true
-          tags: lwplapbs/front:latest
+          tags: 1980ravi/front:latest
 
       - name: Build and push back image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@main
         with:
           context: app/back/src/main/docker/
           push: true
-          tags: lwplapbs/back:latest
+          tags: 1980ravi/back:latest
 
       - name: Build and push reader image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action@main
         with:
           context: app/reader/src/main/docker/
           push: true
-          tags: lwplapbs/reader:latest
+          tags: 1980ravi/reader:latest
 
       - name: 'Deploy'
         uses: WyriHaximus/github-action-helm3@v2
@@ -76,4 +76,3 @@ jobs:
         with:
           exec: helm upgrade --install reader-app ./springboot -f reader-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
-
