@@ -39,21 +39,21 @@ jobs:
         run: ./build-app.sh
            
       - name: Build and push front image
-        uses: docker/build-push-action@main
+        uses: docker/build-push-action@v2
         with:
           context: app/front/src/main/docker/
           push: true
           tags: 1980ravi/front:latest
 
       - name: Build and push back image
-        uses: docker/build-push-action@main
+        uses: docker/build-push-action@v2
         with:
           context: app/back/src/main/docker/
           push: true
           tags: 1980ravi/back:latest
 
       - name: Build and push reader image
-        uses: docker/build-push-action@main
+        uses: docker/build-push-action@v2
         with:
           context: app/reader/src/main/docker/
           push: true
