@@ -59,7 +59,8 @@ jobs:
           push: true
           tags: 1980ravi/reader:latest
 
-  
+      - name: Update kubeconfig for EKS
+        run: aws eks update-kubeconfig --name spring-cluster
 
       - name: 'Deploy'
         uses: WyriHaximus/github-action-helm3@v3
