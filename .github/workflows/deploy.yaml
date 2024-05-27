@@ -68,18 +68,18 @@ jobs:
         with:
           exec: helm upgrade --install front-app ./springboot -f front-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
-          timeout: 1200s
+          timeout: 3600s
 
       - name: 'Deploy'
         uses: WyriHaximus/github-action-helm3@v3
         with:
           exec: helm upgrade --install back-app ./springboot -f back-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
-          timeout: 1200s
+          timeout: 3600s
 
       - name: 'Deploy'
         uses: WyriHaximus/github-action-helm3@v3
         with:
           exec: helm upgrade --install reader-app ./springboot -f reader-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
-          timeout: 1200s
+          timeout: 3600s
