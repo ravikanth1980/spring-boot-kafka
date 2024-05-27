@@ -60,23 +60,26 @@ jobs:
           tags: 1980ravi/reader:latest
 
       - name: Update kubeconfig for EKS
-        run: aws eks update-kubeconfig --name spring-cluster
+        run:  
+          aws eks update-kubeconfig --name spring-cluster
+          sed -i 's/client.authentication.k8s.io\/v1alpha1/client.authentication.k8s.io\/v1beta1/' ~/.kube/config
+          chmod 600 ~/.kube/config  # Adjust file permissions to be secure
     
 
       - name: 'Deploy'
-        uses: WyriHaximus/github-action-helm3@v2
+        uses: WyriHaximus/github-action-helm3@v3
         with:
           exec: helm upgrade --install front-app ./springboot -f front-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
 
       - name: 'Deploy'
-        uses: WyriHaximus/github-action-helm3@v2
+        uses: WyriHaximus/github-action-helm3@v3
         with:
           exec: helm upgrade --install back-app ./springboot -f back-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
 
       - name: 'Deploy'
-        uses: WyriHaximus/github-action-helm3@v2
+        uses: WyriHaximus/github-action-helm3@v3
         with:
           exec: helm upgrade --install reader-app ./springboot -f reader-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
