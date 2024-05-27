@@ -68,6 +68,7 @@ jobs:
         with:
           exec: helm upgrade --install front-app ./springboot -f front-values.yaml
           kubeconfig: '${{ secrets.KUBE_CONFIG }}'
+          timeout: 600s
 
       - name: 'Deploy'
         uses: WyriHaximus/github-action-helm3@v3
