@@ -60,16 +60,12 @@ jobs:
           tags: 1980ravi/reader:latest
 
       - name: Update kubeconfig for EKS
-<<<<<<< HEAD
-        run:  
+
+        run: |  
           aws eks update-kubeconfig --name spring-cluster
           sed -i 's/client.authentication.k8s.io\/v1alpha1/client.authentication.k8s.io\/v1beta1/' ~/.kube/config
           chmod 600 ~/.kube/config  # Adjust file permissions to be secure
-    
-=======
-        run: aws eks update-kubeconfig --name spring-cluster
->>>>>>> 0157eac5232c1ce01bf2b134fcd1990211eaab53
-
+     
       - name: 'Deploy'
         uses: WyriHaximus/github-action-helm3@v3
         with:
